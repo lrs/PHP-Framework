@@ -1,0 +1,16 @@
+# folders
+node_modules/
+src/temp/
+storage/cache/**/*
+storage/logs/**/*
+storage/media/**/*
+storage/sessions/**/*
+vendor/
+
+# files
+.env
+
+# wildcards
+*.cache
+*.config
+*.log

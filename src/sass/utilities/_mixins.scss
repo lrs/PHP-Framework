@@ -1,0 +1,13 @@
+@mixin box {
+    box-sizing: border-box;
+}
+
+@mixin breakpoint($key) {
+    @if not map-has-key($breakpoints, $key) {
+        @warn 'Breakpoint "#{$key}" not found in ./src/sass/helpers/_variables.scss/$breakpoints map.';
+    }
+
+    @media (min-width: map-get($breakpoints, $key)) {
+        @content;
+    }
+}

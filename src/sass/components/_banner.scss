@@ -1,0 +1,16 @@
+.banner {
+    background-color: pick(dark);
+    color: pick(lightest);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+    margin-bottom: 3rem;
+
+    &__title {
+        font-size: 3rem;
+        font-weight: 100;
+        margin: 1rem 0;
+    }
+}

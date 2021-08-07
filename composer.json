@@ -1,0 +1,14 @@
+{
+    "name": "lrs/php-framework",
+    "description": "Light MVC framework",
+    "version": "0.0.1",
+    "require": {
+        "twig/twig": "^3.3",
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "autoload": {
+        "classmap": [
+            "./"
+        ]
+    }
+}

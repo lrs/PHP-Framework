@@ -1,0 +1,8 @@
+// Get color from $colors array and warn if chosen color name doesn't exist.
+@function pick($key) {
+    @if not map-has-key($colors, $key) {
+        @warn 'Color "#{$key}" not found in ./src/sass/utilities/_variables.scss/$colors map.';
+    }
+
+    @return map-get($colors, $key);
+}

@@ -1,0 +1,10 @@
+html {
+    font-size: 16px;
+}
+
+.body {
+    background-color: pick(lightest);
+    font-family: $font-system;
+    font-size: 1rem;
+    margin: 0;
+}

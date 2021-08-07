@@ -1,0 +1,97 @@
+# BEGIN Expiry headers
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresDefault "access plus 90 days"
+</IfModule>
+# END Expiry headers
+
+# BEGIN Custom Headers
+<IfModule mod_headers.c>
+    Header set Cache-Control "public, max-age=7776000"
+
+    # Don't allow pages to be framed at all - Defends against CSRF.
+    Header append X-FRAME-OPTIONS "DENY"
+
+    # Tell the browser to attempt the HTTPS version first.
+    Header add Strict-Transport-Security "max-age=157680000; includeSubDomains; preload"
+
+    # Turn on IE8-IE9 XSS prevention tools.
+    Header set X-XSS-Protection "1; mode=block"
+
+    # Only allow scripts and styles from the same domain.
+    # Don't allow inline scripts or styles.
+    Header set X-Content-Security-Policy "allow 'self';"
+    Header set Content-Security-Policy "script-src 'self'; style-src 'self'; object-src 'none'; frame-ancestors 'none';"
+
+    # Prevent mime based attacks
+    Header set X-Content-Type-Options "nosniff"
+
+    Header unset x-powered-by
+
+    Header append Vary User-Agent env=!dont-vary
+
+    # Persist Connection
+    Header set Connection keep-alive
+</IfModule>
+# END Custom Headers
+
+# BEGIN Compression
+AddType text/css .css
+AddType text/javascript .js
+
+<IfModule mod_deflate.c>
+    <IfModule mod_setenvif.c>
+        <IfModule mod_headers.c>
+            SetEnvIfNoCase ^(Accept-EncodXng|X-cept-Encoding|X{15}|~{15}|-{15})$ ^((gzip|deflate)\s*,?\s*)+|[X~-]{4,13}$ HAVE_Accept-Encoding
+            RequestHeader append Accept-Encoding "gzip,deflate,br" env=HAVE_Accept-Encoding
+        </IfModule>
+    </IfModule>
+
+    <IfModule mod_filter.c>
+        AddOutputFilterByType DEFLATE text/css text/x-component application/x-javascript application/javascript text/javascript text/x-js text/html text/richtext image/svg+xml text/plain text/xsd text/xsl text/xml image/bmp application/java application/msword application/vnd.ms-fontobject application/x-msdownload image/x-icon application/json application/vnd.ms-access application/vnd.ms-project application/x-font-otf application/vnd.ms-opentype application/vnd.oasis.opendocument.database application/vnd.oasis.opendocument.chart application/vnd.oasis.opendocument.formula application/vnd.oasis.opendocument.graphics application/vnd.oasis.opendocument.presentation application/vnd.oasis.opendocument.spreadsheet application/vnd.oasis.opendocument.text audio/ogg application/pdf application/vnd.ms-powerpoint application/x-shockwave-flash image/tiff application/x-font-ttf application/vnd.ms-opentype audio/wav application/vnd.ms-write application/font-woff application/font-woff2 application/vnd.ms-excel
+
+        <IfModule mod_mime.c>
+            # DEFLATE by extension.
+            AddOutputFilter DEFLATE js css htm html xml
+        </IfModule>
+    </IfModule>
+</IfModule>
+
+<FilesMatch "\.(bmp|class|doc|docx|eot|exe|ico|json|mdb|mpp|otf|_otf|odb|odc|odf|odg|odp|ods|odt|ogg|pdf|pot|pps|ppt|pptx|svg|svgz|swf|tif|tiff|ttf|ttc|_ttf|wav|wri|woff|woff2|xla|xls|xlsx|xlt|xlw|BMP|CLASS|DOC|DOCX|EOT|EXE|ICO|JSON|MDB|MPP|OTF|_OTF|ODB|ODC|ODF|ODG|ODP|ODS|ODT|OGG|PDF|POT|PPS|PPT|PPTX|SVG|SVGZ|SWF|TIF|TIFF|TTF|TTC|_TTF|WAV|WRI|WOFF|WOFF2|XLA|XLS|XLSX|XLT|XLW)$">
+    <IfModule mod_headers.c>
+        Header unset Last-Modified
+    </IfModule>
+</FilesMatch>
+# END Compression
+
+# BEGIN Rules
+<IfModule mod_rewrite.c>
+    <IfModule mod_negotiation.c>
+        Options -Indexes -MultiViews
+    </IfModule>
+
+    RewriteEngine On
+
+    ## You may need to uncomment the following line for some hosting environments,
+    # if you have installed to a subdirectory, enter the name here also.
+    # RewriteBase /
+
+    ## Uncomment following lines to force HTTPS.
+    # RewriteCond %{HTTPS} off
+    # RewriteRule (.*) https://%{SERVER_NAME}/$1 [R,L]
+
+    # Handle Authorization Header
+    RewriteCond %{HTTP:Authorization} .
+    RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+
+    # Redirect Trailing Slashes If Not A Folder.
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_URI} (.+)/$
+    RewriteRule ^ %1 [L,R=301]
+
+    # Handle all requests.
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^ index.php [L]
+</IfModule>
+# END Rules

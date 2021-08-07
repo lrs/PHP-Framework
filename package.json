@@ -1,0 +1,38 @@
+{
+    "name": "php-framework",
+    "version": "0.0.1",
+    "description": "Light MVC framework",
+    "directories": {
+        "test": "tests"
+    },
+    "scripts": {
+        "build": "cross-env NODE_ENV=development gulp",
+        "dist": "cross-env NODE_ENV=production gulp",
+        "test:unit": "jest",
+        "test:e2e": "cypress",
+        "clear:twig": "sudo rm -rf storage/cache/twig"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/lrs/framework"
+    },
+    "keywords": [
+        "PHP",
+        "TWIG",
+        "Typescript"
+    ],
+    "author": "Lee Spendlove <lee.spendlove@gmail.com>",
+    "license": "https://opensource.org/licenses/MIT",
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ],
+    "devDependencies": {
+        "browserslist": "^4.16.6",
+        "cross-env": "^7.0.3",
+        "gulp": "^4.0.2",
+        "gulp-sass": "^4.1.0",
+        "gulp-sourcemaps": "^3.0.0"
+    }
+}
