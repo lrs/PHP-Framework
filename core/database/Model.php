@@ -4,7 +4,7 @@ namespace App\Core\Database;
 
 use App\Core\App;
 
-class Model
+abstract class Model
 {
     protected static $table;
 

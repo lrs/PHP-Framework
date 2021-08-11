@@ -25,7 +25,7 @@ require 'twig.php';
 // Bind all config files
 $config = [];
 
-foreach (glob(__DIR__ . '/../config/*.php') as $filename) {
+foreach (glob(__DIR__ . '/../config/*.php', GLOB_NOSORT) as $filename) {
     $configName = basename($filename, '.php');
     $currConfig = include $filename;
     $config[$configName] = $currConfig;
@@ -60,5 +60,5 @@ if (array_key_exists('database', App::get('config'))) {
     throw new Exception("Database config file not found", 1);
 };
 
-Router::load([__DIR__ . '/../routes/web.php', __DIR__ . '/../routes/api.php'])
+Router::load(glob(__DIR__ . '/../routes/*.php', GLOB_NOSORT))
     ->direct(Request::uri(), Request::method());
