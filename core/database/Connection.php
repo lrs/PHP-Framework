@@ -15,8 +15,8 @@ class Connection
                 $config['password'],
                 $config['options']
             );
-        } catch (PDOException $err) {
-            throw new Exception($err->getMessage(), 1);
+        } catch (\PDOException $err) {
+            throw new \Exception($err->getMessage(), 1);
         }
     }
 }

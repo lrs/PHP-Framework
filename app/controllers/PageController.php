@@ -15,6 +15,8 @@ class PageController
         ];
 
         echo view("pages/index", $params);
+
+        phpinfo();
     }
 
     public function notFound()

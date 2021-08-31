@@ -39,9 +39,9 @@ App::bind('config', $config);
     Usage example:
 
     $users = App::get('database')
-    ->select('users')
-    ->where(['id', 1])
-    ->get();
+        ->select('users')
+        ->where(['id', 1])
+        ->get();
 
     foreach ($users as $key => $user) {
         dump($user->id);
