@@ -8,10 +8,11 @@ class Translate
 {
     private string $locale;
 
-    public function __construct()
+    public function __construct(string $locale = null)
     {
-        $this->locale = env('APP_LOCALE', 'en');
+        $this->locale = isset($locale)?: env('APP_LOCALE', 'en');
     }
+
     public function get(string $text)
     {
         return Yaml::parseFile(__DIR__ . "/../resources/lang/{$this->locale}.yaml")[$text];
