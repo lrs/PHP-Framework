@@ -3,6 +3,7 @@
 namespace App\Core;
 
 use Symfony\Component\Yaml\Yaml;
+use Symfony\Component\Yaml\Exception\ParseException;
 
 class Translate
 {
@@ -15,6 +16,12 @@ class Translate
 
     public function get(string $text)
     {
-        return Yaml::parseFile(__DIR__ . "/../resources/lang/{$this->locale}.yaml")[$text];
+        try {
+            return Yaml::parseFile(__DIR__ . "/../resources/lang/{$this->locale}.yaml")[$text];
+        } catch (ParseException $err) {
+            logText($err->getMessage());
+            
+            return $text;
+        }
     }
 }
