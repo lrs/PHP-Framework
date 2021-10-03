@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use Symfony\Component\Yaml\Yaml;
+
 class Translate
 {
     private string $locale;
@@ -12,6 +14,6 @@ class Translate
     }
     public function get(string $text)
     {
-        return "{$text} ({$this->locale})";
+        return Yaml::parseFile(__DIR__ . "/../resources/lang/{$this->locale}.yaml")[$text];
     }
 }
