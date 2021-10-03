@@ -35,7 +35,9 @@ function view(string $name, array $params = [])
 
 function trans(string $text)
 {
-    return Translate::get($text);
+    $translate = new Translate();
+
+    return $translate->get($text);
 }
 
 function highlight(string $message, string $type)

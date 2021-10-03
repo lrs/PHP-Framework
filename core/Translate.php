@@ -4,10 +4,14 @@ namespace App\Core;
 
 class Translate
 {
-    private $locale = 'en';
+    private string $locale;
 
-    public static function get(string $text)
+    public function __construct()
     {
-        return "{$text}";
+        $this->locale = env('APP_LOCALE', 'en');
+    }
+    public function get(string $text)
+    {
+        return "{$text} ({$this->locale})";
     }
 }
