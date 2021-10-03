@@ -1,5 +1,5 @@
-{% set title = 'Home' %}
-{% set desc = 'Welcome to the PHP-Framework' %}
+{% set title = _('page.home.title') %}
+{% set desc = _('page.home.description') %}
 
 {% extends 'layouts/default.twig' %}
 
@@ -9,7 +9,7 @@
 
 {% block content %}
     <div class="grid__col-12">
-        <p>Hello {{ name }}!</p>
+        <p>{{ _('page.home.welcome') }} {{ name }}!</p>
         <p>{{ lorem(30) }}</p>
     </div>
 {% endblock %}

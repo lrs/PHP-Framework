@@ -4,6 +4,7 @@ use Twig\Environment as TwigEnvironment;
 use Twig\Loader\FilesystemLoader as TwigFilesystemLoader;
 use Twig\TwigFilter;
 use Twig\TwigFunction;
+use App\Core\Translate;
 
 function view(string $name, array $params = [])
 {
@@ -25,7 +26,16 @@ function view(string $name, array $params = [])
     $lorem = new TwigFunction('lorem', 'lorem');
     $twig->addFunction($lorem);
 
+    // translate text based on yaml files in ./resources/lang.
+    $trans = new TwigFunction('_', 'trans', ['is_safe' => ['html']]);
+    $twig->addFunction($trans);
+
     return $twig->render("{$name}.twig", $params);
+}
+
+function trans(string $text)
+{
+    return Translate::get($text);
 }
 
 function highlight(string $message, string $type)
