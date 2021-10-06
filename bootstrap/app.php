@@ -23,15 +23,7 @@ require 'helpers.php';
 require 'twig.php';
 
 // Bind all config files
-$config = [];
-
-foreach (glob(__DIR__ . '/../config/*.php', GLOB_NOSORT) as $filename) {
-    $configName = basename($filename, '.php');
-    $currConfig = include $filename;
-    $config[$configName] = $currConfig;
-}
-
-App::bind('config', $config);
+App::bind('config', loadFiles('config'));
 
 /*
     Set up the Query Builder.

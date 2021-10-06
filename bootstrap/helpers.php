@@ -88,3 +88,18 @@ function logText($msg, $title = 'PHP-Framework')
         throw $th;
     }
 }
+
+function loadFiles(string $path)
+{
+    $loadedFiles = [];
+
+    foreach (glob(__DIR__ . "/../{$path}/*.php", GLOB_NOSORT) as $filename) {
+        $fileName = basename($filename, '.php');
+
+        $currFile = include $filename;
+
+        $loadedFiles[$fileName] = $currFile;
+    }
+
+    return $loadedFiles;
+}

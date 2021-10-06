@@ -6,16 +6,10 @@ class Migrate
 {
     public $migrations = [];
 
-    public function get()
+    public function __construct()
     {
         // get all migrations
-        foreach (glob(__DIR__ . '/../database/migrations/*.php', GLOB_NOSORT) as $filename) {
-            $migrationName = basename($filename, '.php');
-
-            $currMigration = include $filename;
-
-            $this->migrations[$migrationName] = $currMigration;
-        }
+        $this->migrations = loadFiles('database/migrations');
     }
 
     // run them
