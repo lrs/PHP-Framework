@@ -2,7 +2,7 @@ const gulp = require("gulp");
 const plumber = require("gulp-plumber");
 const maps = require("gulp-sourcemaps");
 const gulpIf = require("gulp-if");
-const sass = require("gulp-sass");
+const sass = require("gulp-sass")(require('sass'));
 const cssClean = require("gulp-clean-css");
 const autoPrefixer = require("gulp-autoprefixer");
 

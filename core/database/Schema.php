@@ -2,7 +2,8 @@
 
 namespace App\Core\Database;
 
-class Schema{
+class Schema
+{
     public static function increments()
     {
         return 'BIGINT';
