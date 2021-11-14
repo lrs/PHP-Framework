@@ -56,9 +56,7 @@ class Migrate
                 }
             }
 
-            echo $query;
-
-            // App::get('database')->raw($query);
+            App::get('database')->raw($query);
         }
     }
 }
