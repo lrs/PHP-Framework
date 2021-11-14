@@ -3,6 +3,7 @@
 namespace App\Core\Database;
 
 use PDO;
+use PDOException;
 
 class QueryBuilder
 {
@@ -13,6 +14,22 @@ class QueryBuilder
     public function __construct($conn)
     {
         $this->conn = $conn;
+    }
+
+    public function raw($query)
+    {
+        try {
+            $qry = $this->conn->prepare($query);
+            $qry->execute();
+
+            if (false !== mb_stripos($query, 'select')) {
+                return $qry->fetchAll(PDO::FETCH_CLASS);
+            } else {
+                return $qry->rowCount();
+            }
+        } catch (PDOException $err) {
+            return $err->getMessage();
+        }
     }
 
     public function select($table)

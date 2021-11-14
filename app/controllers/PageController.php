@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Models\User;
+use App\Database\Migrate;
 
 class PageController
 {
@@ -16,7 +17,9 @@ class PageController
 
         echo view("pages/index", $params);
 
-        phpinfo();
+        $temp = new Migrate();
+
+        $temp->run();
     }
 
     public function notFound()

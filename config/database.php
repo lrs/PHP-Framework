@@ -10,6 +10,8 @@ return [
         'password' => env('DB_PASSWORD', 'PHP-Framework'),
         'options'  => [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
-        ]
+        ],
+        'charset' => 'utf8mb4',
+        'collate' => 'utf8mb4_unicode_ci'
     ]
 ];
