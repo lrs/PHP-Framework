@@ -46,7 +46,7 @@ class Migrate
                         $query = $query . ", PRIMARY KEY (`{$primary}`)";
                     }
 
-                    if (isset($indexes) && 0 < sizeof($indexes)) {
+                    if (isset($indexes) && 0 < count($indexes)) {
                         foreach ($indexes as $index) {
                             $query = $query . $index;
                         }
@@ -56,7 +56,9 @@ class Migrate
                 }
             }
 
-            App::get('database')->raw($query);
+            echo $query;
+
+            // App::get('database')->raw($query);
         }
     }
 }
