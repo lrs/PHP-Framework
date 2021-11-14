@@ -24,6 +24,8 @@ class Migrate
                 foreach ($migrations as $table => $definition) {
                     $primary = '';
 
+                    $indexes = [];
+
                     $query = "CREATE TABLE IF NOT EXISTS `{$table}` (";
 
                     foreach ($definition as $column => $type) {
@@ -33,6 +35,10 @@ class Migrate
                             $primary = $column;
                         }
 
+                        if ($type->index) {
+                            array_push($indexes, ", KEY {$table}_{$column}_index (`{$column}`)");
+                        }
+
                         $query = $query . "`{$column}` {$type->type} {$type->default} {$type->null}{$separator}";
                     }
 
@@ -40,13 +46,17 @@ class Migrate
                         $query = $query . ", PRIMARY KEY (`{$primary}`)";
                     }
 
+                    if (isset($indexes) && 0 < sizeof($indexes)) {
+                        foreach ($indexes as $index) {
+                            $query = $query . $index;
+                        }
+                    }
+
                     $query = $query . ')';
                 }
             }
 
-            echo $query;
-
-            dump(App::get('database')->raw($query));
+            App::get('database')->raw($query);
         }
     }
 }

@@ -1,7 +1,7 @@
 lockfileVersion: 5.3
 
 specifiers:
-  browserslist: ^4.17.6
+  browserslist: ^4.18.0
   cross-env: ^7.0.3
   gulp: ^4.0.2
   gulp-autoprefixer: ^8.0.0
@@ -14,7 +14,7 @@ specifiers:
   sass: ^1.43.4
 
 devDependencies:
-  browserslist: 4.17.6
+  browserslist: 4.18.0
   cross-env: 7.0.3
   gulp: 4.0.2
   gulp-autoprefixer: 8.0.0_gulp@4.0.2
@@ -264,7 +264,7 @@ packages:
     peerDependencies:
       postcss: ^8.1.0
     dependencies:
-      browserslist: 4.17.6
+      browserslist: 4.18.0
       caniuse-lite: 1.0.30001280
       fraction.js: 4.1.2
       normalize-range: 0.1.2
@@ -353,8 +353,8 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /browserslist/4.17.6:
-    resolution: {integrity: sha512-uPgz3vyRTlEiCv4ee9KlsKgo2V6qPk7Jsn0KAn2OBqbqKo3iNcPEC1Ti6J4dwnz+aIRfEEEuOzC9IBk8tXUomw==}
+  /browserslist/4.18.0:
+    resolution: {integrity: sha512-ER2M0g5iAR84fS/zjBDqEgU6iO5fS9JI2EkHr5zxDxYEFk3LjhU9Vpp/INb6RMQphxko7PDV1FH38H/qVP5yCA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
     dependencies:
