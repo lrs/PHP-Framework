@@ -8,6 +8,11 @@ abstract class Model
 {
     protected static $table;
 
+    public function __construct()
+    {
+        //
+    }
+
     public static function get()
     {
         return App::get('database')
@@ -21,5 +26,11 @@ abstract class Model
             ->select(static::$table)
             ->where('id', $id)
             ->first();
+    }
+
+    public function save()
+    {
+        return App::get('database')
+           ->insert(static::$table, (array) $this);
     }
 }

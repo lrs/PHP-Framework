@@ -84,7 +84,7 @@ class QueryBuilder
             $qry = $this->conn->prepare($sql);
             $qry->execute($params);
         } catch (PDOException $err) {
-            throw new \Exception($err->message(), 1);
+            throw new \Exception($err, 1);
         }
 
         $id = $this->conn->lastInsertId();
