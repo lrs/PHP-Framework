@@ -7,16 +7,16 @@ use PDOException;
 
 class QueryBuilder
 {
-    protected $conn;
+    protected object $conn;
 
-    protected $sql = '';
+    protected string $sql = '';
 
-    public function __construct($conn)
+    public function __construct(object $conn)
     {
         $this->conn = $conn;
     }
 
-    public function raw($query)
+    public function raw(string $query)
     {
         try {
             $qry = $this->conn->prepare($query);
@@ -32,9 +32,11 @@ class QueryBuilder
         }
     }
 
-    public function select($table)
+    public function select(string $table, array $fields = ['*'])
     {
-        $this->sql = "select * from {$table}";
+        $fields = implode(', ', $fields);
+
+        $this->sql = "select {$fields} from {$table}";
 
         return $this;
     }
@@ -69,7 +71,7 @@ class QueryBuilder
         return $this->all()[0];
     }
 
-    public function insert($table, $params)
+    public function insert(string $table, array $params)
     {
         $sql = sprintf(
             'insert %s (%s) values (%s)',
