@@ -2,9 +2,10 @@
 
 namespace App\Controllers;
 
+use App\Core\Controller;
 use App\Models\User;
 
-class PageController
+class PageController extends Controller
 {
     public function index()
     {
@@ -15,10 +16,5 @@ class PageController
         ];
 
         echo view("pages/index", $params);
-    }
-
-    public function notFound()
-    {
-        echo view("errors/404");
     }
 }
