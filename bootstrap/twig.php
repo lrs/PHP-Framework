@@ -59,7 +59,7 @@ function highlight(string $message, string $type)
 
 function lorem(int $count)
 {
-    $ipsum = <<<'EOD'
+    $ipsum = <<<EOD
         The game's not big enough unless it scares you a little. We could cause a diplomatic crisis.
         Take the ship into the Neutral Zone Fate protects fools, little children and ships named Enterprise.
         Fear is the true enemy, the only enemy. And blowing into maximum warp speed,
