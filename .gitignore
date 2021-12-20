@@ -5,6 +5,8 @@ storage/cache/**/*
 storage/logs/**/*
 storage/media/**/*
 storage/sessions/**/*
+tests/e2e/screenshots/**/*
+tests/e2e/videos/**/*
 vendor/
 
 # files
