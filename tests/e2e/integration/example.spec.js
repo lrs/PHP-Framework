@@ -1,4 +1,6 @@
 describe('Example Spec', () => {
+    const bannerClassName = 'banner';
+
     beforeEach(() => {
         cy.visit('/');
     });
@@ -8,6 +10,8 @@ describe('Example Spec', () => {
     });
 
     it('shows the banner on the home page', () => {
-        cy.get('.banner');
+        cy.get(`.${ bannerClassName }`)
+            .find('h1')
+            .should('have.class', `${ bannerClassName }__title`);
     });
 });

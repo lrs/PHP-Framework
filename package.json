@@ -9,8 +9,8 @@
         "build": "cross-env NODE_ENV=development gulp",
         "dist": "cross-env NODE_ENV=production gulp",
         "test:unit": "jest",
-        "test:e2e": "cypress",
-        "test:e2e-headless": "cypress run --headless",
+        "test:e2e": "cypress run",
+        "test:e2e-gui": "cypress open",
         "clear:twig": "sudo rm -rf storage/cache/twig"
     },
     "repository": {
