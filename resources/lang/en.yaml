@@ -2,3 +2,8 @@
 page.home.title: Home
 page.home.description: Welcome to the PHP-Framework
 page.home.welcome: Hello
+
+# errors
+error.notfound.title: Not Found
+error.notfound.description: Sorry, we couldn't find a page for this request
+error.notfound.welcome: 404 Not Found

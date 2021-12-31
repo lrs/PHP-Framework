@@ -15,7 +15,7 @@ function view(string $name, array $params = [])
     // Default is 'cache' => false.
     // Set 'cache' => 'path/to/cache/folder' if caching is required.
     $twig = new TwigEnvironment($loader, array(
-        'cache' => __DIR__ . '/../storage/cache/twig'
+        'cache' => 'local' !== env('APP_ENV') ? __DIR__ . '/../storage/cache/twig' : false
     ));
 
     // Extend Twig with custom filters (twig filter name, callback, options).

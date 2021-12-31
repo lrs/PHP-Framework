@@ -1,0 +1,48 @@
+<nav class="menu">
+    <div class="menu__items">
+        <a href="/home" class="link link--menu-brand">
+            <img
+                srcset="
+                    /assets/img/logo_brand.png 1x,
+                    /assets/img/logo_brand_dpr.png 2x,
+                    /assets/img/logo_brand_dpr.png 3x
+                "
+                src="/assets/img/logo_brand.png"
+                alt="PHP Framework Logo"
+                width="56"
+                height="56"
+            >
+        </a>
+
+        <ol id="menu" class="list list--menu list--menu-collapse">
+            <li class="list__item-menu">
+                <a href="/home" class="link link--menu {{ '/' == url or 'home' in url? 'link--menu-active' }}">HOME</a>
+            </li>
+            <li class="list__item-menu">
+                <a href="/about" class="link link--menu {{ 'about' in url? 'link--menu-active' }}">ABOUT</a>
+            </li>
+            <li class="list__item-menu">
+                <a href="/contact" class="link link--menu {{ 'contact' in url? 'link--menu-active' }}">CONTACT</a>
+            </li>
+        </ol>
+
+        <button
+            class="menu__toggler menu--collapsed"
+            type="button"
+            title="Toggle Navigation"
+            data-toggle="false"
+            data-target="#menu"
+            aria-controls="menu"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+        >
+            <svg class="menu__toggler-icon" viewBox="0 0 32 32">
+                <g class="menu__toggler-icon-paths">
+                    <path class="menu__toggler-icon-upper" d="M4,8h24"></path>
+                    <path class="menu__toggler-icon-middle" d="M4,16h24"></path>
+                    <path class="menu__toggler-icon-lower" d="M4,24h24"></path>
+                </g>
+            </svg>
+        </button>
+    </div>
+</nav>

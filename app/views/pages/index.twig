@@ -3,8 +3,8 @@
 
 {% extends 'layouts/default.twig' %}
 
-{% block title %}
-    {{ title }}
+{% block banner %}
+    {{ include('components/banner.twig', { title: title }) }}
 {% endblock %}
 
 {% block content %}

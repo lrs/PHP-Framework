@@ -1,4 +1,4 @@
 <?php
 
 // Pages
-$router->get('', 'PageController@index');
+$router->get(['', '/', 'home'], 'PageController@index');

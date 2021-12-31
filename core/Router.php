@@ -20,9 +20,15 @@ class Router
         return $router;
     }
 
-    public function get($uri, $controller)
+    public function get($uris, $controller)
     {
-        $this->routes['GET'][$uri] = $controller;
+        if (is_array($uris)) {
+            foreach ($uris as $uri) {
+                $this->routes['GET'][$uri] = $controller;
+            }
+        } else {
+            $this->routes['GET'][$uris] = $controller;
+        }
     }
 
     public function post($uri, $controller)

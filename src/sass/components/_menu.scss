@@ -1,0 +1,305 @@
+.menu {
+    @include box;
+
+    transition: background-color 250ms ease-out 0s, transform 300ms ease-in-out 0s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    transform: translateY(0);
+    width: 100%;
+    z-index: 999;
+
+    &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        box-shadow: shadow(mid);
+        opacity: 0;
+        z-index: -1;
+        top: 0;
+        left: 0;
+        right: 0;
+        transition: opacity 150ms ease-out 0s;
+    }
+
+    &--content {
+        background-color: transparentize($color: pick(lightest), $amount: 0.05);
+
+        &::after {
+            opacity: 1;
+        }
+    }
+
+    &--show::after {
+        opacity: 0;
+    }
+
+    &--hidden {
+        transform: translateY(-110%);
+    }
+
+    &--banner:not(.menu--content) {
+        .link--menu {
+            color: pick(darker);
+
+            &-active,
+            &:hover {
+                color: pick(darkest);
+            }
+
+            &::before {
+                border-bottom-color: pick(darkest);
+            }
+        }
+    }
+
+    &__toggler {
+        @include box;
+
+        @include breakpoint(md) {
+            display: none;
+        }
+
+        background-color: transparent;
+        border: 0;
+        border-radius: 0;
+        color: pick(dark);
+
+        &-icon {
+            width: 2rem;
+            height: 2rem;
+
+            &-paths {
+                width: 24px;
+                stroke: pick(dark);
+                stroke-width: 5%;
+                stroke-linecap: square;
+                stroke-dasharray: 18px 6px;
+                stroke-dashoffset: 21px;
+                transition: stroke 150ms ease-out 0s;
+            }
+        }
+
+        &:hover,
+        &:focus,
+        &:active {
+            .menu__toggler-icon-paths {
+                stroke: pick(darkest);
+            }
+        }
+    }
+
+    &__items {
+        @include breakpoint(sm) {
+            padding-left: 1rem;
+            padding-right: 1rem;
+        }
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0 auto;
+        padding: 0 0.5rem;
+        position: relative;
+    }
+
+    &__dropdown {
+        @include box;
+
+        @include breakpoint(md) {
+            background-color: transparentize($color: pick(lightest), $amount: 0.05);
+            box-shadow: shadow(drop);
+            border-bottom-left-radius: radius(small);
+            border-bottom-right-radius: radius(small);
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            min-width: 17rem;
+        }
+
+        background-color: transparentize($color: pick(lighter), $amount: 0.65);
+        display: block;
+        padding: 0;
+        opacity: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 150ms ease-out 0s, opacity 250ms ease-out 0s;
+
+        &--show {
+            opacity: 1;
+            max-height: 100vh;
+        }
+    }
+}
+
+// Mobile first!
+.list--menu {
+    @include box;
+
+    // Show at breakpoint:
+    @include breakpoint(md) {
+        background-color: transparent;
+        box-shadow: none;
+        position: static;
+        padding: 0;
+        width: auto;
+        overflow-y: inherit;
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0%);
+        z-index: auto;
+    }
+
+    background-color: transparentize($color: pick(lightest), $amount: 0.05);
+    box-shadow: shadow(mid);
+    list-style: none;
+    padding: 6rem 0 2rem;
+    margin: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    max-height: 100vh;
+    overflow-y: auto;
+
+    // Hide by default:
+    visibility: hidden;
+    transform: translateY(-100%);
+    position: absolute;
+    z-index: -1;
+
+    // Show when class added
+    &-show {
+        // But make sure it looks okay at breakpoint if class still added
+        @include breakpoint(md) {
+            background-color: transparent;
+            padding: 0;
+            box-shadow: none;
+            position: static;
+            width: auto;
+            transform: translateY(0%);
+            z-index: auto;
+        }
+
+        position: absolute;
+    }
+}
+
+
+.list__item-menu {
+    @include breakpoint(md) {
+        display: inline;
+        margin: 0 0.5rem;
+    }
+
+    display: block;
+    text-align: center;
+    padding-left: 0;
+    margin-bottom: 0;
+    width: 100%;
+
+    &--dropdown-container {
+        @include breakpoint(md) {
+            position: relative;
+        }
+    }
+
+    &--dropdown {
+        margin: 0;
+    }
+}
+
+.link--menu {
+    @include box;
+
+    @include breakpoint(md) {
+        font-size: 0.85rem;
+        width: auto;
+    }
+
+    color: pick(darker);
+    display: inline-block;
+    letter-spacing: 0.2em;
+    text-decoration: none;
+    line-height: 1;
+    padding: 1.75rem 1rem;
+    width: 100%;
+    border: 0;
+    position: relative;
+
+    &::before {
+        @include box;
+
+        content: '';
+        display: block;
+        border-bottom: solid 1px pick(dark);
+        width: 2.75em;
+        height: 2.75em;
+        margin: 0 auto;
+        position: absolute;
+        left: 50%;
+        bottom: 1em;
+        opacity: 0;
+        transform: translate(-50%, 15%);
+        transition: opacity 350ms ease-out 0s, transform 350ms ease-out 0s;
+    }
+
+    &-active,
+    &:hover {
+        color: pick(darkest);
+        border: 0;
+    }
+
+    &:hover::before,
+    &-active::before {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
+
+    &-dropdown {
+        @include breakpoint(md) {
+            white-space: nowrap;
+        }
+
+        line-height: 1.5;
+        width: 100%;
+    }
+
+    &-brand {
+        @include breakpoint(sm) {
+            margin: 0;
+        }
+
+        text-decoration: none;
+        padding: 0.5rem 0;
+        margin-right: 0.5rem;
+        line-height: 0.5;
+
+        &:hover {
+            border-bottom-color: transparent;
+        }
+    }
+
+    &-toggle {
+        &::after {
+            display: inline-block;
+            content: '';
+            border-top: solid 0.5rem pick(greyest);
+            border-right: solid 0.35rem transparent;
+            border-bottom: solid 0.5rem transparent;
+            border-left: solid 0.35rem transparent;
+            transform-origin: top;
+            transform: translate(0.25rem, 0.5rem) rotateX(0);
+
+            transition: transform 150ms ease-in-out 0s;
+        }
+    }
+
+    &-toggled {
+        &::after {
+            transform: translate(0.25rem, 0.5rem) rotateX(180deg);
+        }
+    }
+}
