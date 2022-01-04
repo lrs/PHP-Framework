@@ -13,23 +13,30 @@ class EventEmitter
 
     public function on($event, $callback)
     {
-        if (!$this->events[$event]) {
+        if (!array_key_exists($event, $this->events)) {
             $this->events[$event] = [];
         }
 
-        $this->events[$event].push($callback);
+        array_push($this->events[$event], $callback);
     }
 
     public function trigger($event, ...$args)
     {
-        if (!$this->events[$event]) {
+        if (!array_key_exists($event, $this->events)) {
             return false;
         }
 
         foreach ($this->events[$event] as $callback) {
-            call_user_func($callback, ...$args);
+            $callback(...$args);
         }
 
         return true;
+    }
+
+    public function remove($event)
+    {
+        if ($this->events[$event]) {
+            unset($this->events[$event]);
+        }
     }
 }

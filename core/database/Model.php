@@ -8,11 +8,6 @@ abstract class Model
 {
     protected static $table;
 
-    public function __construct()
-    {
-        //
-    }
-
     public static function get()
     {
         return App::get('database')

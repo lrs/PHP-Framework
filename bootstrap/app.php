@@ -4,6 +4,7 @@ use Dotenv\Dotenv;
 use App\Core\Request;
 use App\Core\Router;
 use App\Core\App;
+use App\Core\EventEmitter;
 use App\Core\Database\Connection;
 use App\Core\Database\QueryBuilder;
 
@@ -24,6 +25,8 @@ require 'twig.php';
 
 // Bind all config files
 App::bind('config', loadFiles('config'));
+
+App::bind('emitter', new EventEmitter());
 
 /*
     Set up the Query Builder.
