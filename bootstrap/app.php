@@ -22,6 +22,11 @@ if ('local' == $_ENV['APP_ENV']) {
 
 session_start();
 
+if (!array_key_exists('csrf', $_SESSION)) {
+    $token = bin2hex(random_bytes(30));
+    $_SESSION['csrf'] = $token;
+}
+
 require 'helpers.php';
 require 'twig.php';
 
