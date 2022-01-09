@@ -20,6 +20,8 @@ if ('local' == $_ENV['APP_ENV']) {
     error_reporting(E_ALL);
 }
 
+session_start();
+
 require 'helpers.php';
 require 'twig.php';
 
