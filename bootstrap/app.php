@@ -20,14 +20,12 @@ if ('local' == $_ENV['APP_ENV']) {
     error_reporting(E_ALL);
 }
 
-
 session_start([
     'name' => 'php-framework',
     'cookie_samesite' => 'Strict',
     'cookie_secure' => true,
     'cookie_httponly' => true
 ]);
-
 
 if (!array_key_exists('csrf', $_SESSION)) {
     $token = bin2hex(random_bytes(30));

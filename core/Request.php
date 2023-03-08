@@ -7,7 +7,8 @@ class Request
     public static function uri()
     {
         $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-        return trim($url, '/');
+
+        return isset($url) ? trim($url, '/') : null;
     }
 
     public static function method()

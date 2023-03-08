@@ -5,11 +5,15 @@
     "require": {
         "twig/twig": "^3.3",
         "vlucas/phpdotenv": "^5.3",
-        "symfony/yaml": "^5.3"
+        "symfony/yaml": "^5.3",
+        "itsgoingd/clockwork": "^5.1"
     },
     "autoload": {
         "classmap": [
             "./"
         ]
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     }
 }
