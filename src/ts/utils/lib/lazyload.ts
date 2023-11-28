@@ -1,40 +1,35 @@
 import config from '../config';
-import { inView, nodeListAsArray } from '../helpers';
 
-export const lazyLoad = (): void => {
-    const lazyLoadableList: NodeListOf<HTMLElement> = document.querySelectorAll(
-        `${ config.LAZY_LOAD_CLASS }:not([data-loaded="loaded"])`
-    );
+import { lazyLoad } from '../helpers';
 
-    if (lazyLoadableList) {
-        // Support IE9+
-        const nodes: HTMLElement[] = nodeListAsArray(lazyLoadableList);
+const callbackAction = (target: HTMLElement) => {
+    const img: HTMLImageElement = target.getElementsByTagName('img')[0];
+    const vid: HTMLVideoElement = target.getElementsByTagName('video')[0];
 
-        nodes.forEach((node: HTMLElement) => {
-            let useNode: HTMLElement = node;
+    if (img) {
+        img.src = img.dataset.src;
 
-            // if node not img then get child image
-            if ('IMG' !== useNode.tagName) {
-                useNode = node.querySelector('img:first-of-type');
-            }
-
-            if (inView(useNode) && !useNode.classList.contains('lazyload--show')) {
-                window.setTimeout(() => {
-                    const state: string = node.dataset.loaded;
-
-                    if ('loaded' !== state) {
-                        if (inView(useNode)) {
-                            node.dataset.loaded = 'loading';
-
-                            const imgSrc: string = useNode.dataset.src;
-                            useNode.setAttribute('src', imgSrc);
-                            node.classList.add('lazyload--show');
-
-                            node.dataset.loaded = 'loaded';
-                        }
-                    }
-                }, 150);
-            }
-        });
+        if (img.dataset.srcset) {
+            img.setAttribute('srcset', img.dataset.srcset);
+            img.setAttribute('sizes', img.dataset.sizes);
+        }
     }
+
+    if (vid) {
+        vid.setAttribute('poster', vid.dataset.poster);
+        vid.setAttribute('src', vid.dataset.src);
+        vid.setAttribute('preload', 'metadata');
+    }
+
+    target.classList.add('show');
+};
+
+export const lazyLoader = () => {
+    lazyLoad(
+        callbackAction,
+        `${ config.LAZY_LOAD_CLASS }:not([data-loaded="loaded"])`,
+        0.25,
+        null,
+        '0px'
+    );
 };

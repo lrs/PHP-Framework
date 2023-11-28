@@ -73,7 +73,7 @@ export class Menu {
 
                 this.menuAnim
                     .reverse()
-                    .then((result: any) => {
+                    .then(() => {
                         this.collapseMenu.removeAttribute('style');
                         this.mainMenu.classList.remove('menu--show');
 

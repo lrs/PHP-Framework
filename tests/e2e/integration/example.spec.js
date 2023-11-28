@@ -5,6 +5,14 @@ describe('Example Spec', () => {
         cy.visit('/');
     });
 
+    it("returns 200 HTTP response when visiting the home page", () => {
+        cy.request({
+            url: '/'
+        }).then((response) => {
+            expect(response.status).to.eq(200);
+        });
+    });
+
     it('shows the greeting message on the home page', () => {
         cy.contains(/Hello\s.+!/);
     });

@@ -4,7 +4,7 @@ import config from './config';
 
 import {
     Menu,
-    lazyLoad,
+    lazyLoader,
     MainScroller,
     Scroller,
     Cookies
@@ -14,6 +14,8 @@ window.addEventListener('DOMContentLoaded', () => {
     const menu: HTMLElement = document.querySelector(config.MAIN_MENU);
     const mainMenu = new Menu();
     mainMenu.init();
+
+    lazyLoader();
 
     const scroller: MainScroller = new MainScroller();
     const s: Scroller = new Scroller();
@@ -54,8 +56,6 @@ window.addEventListener('DOMContentLoaded', () => {
         } else {
             menu.classList.add('menu--content');
         }
-
-        lazyLoad();
 
         scroller.setMainScroller();
     };
