@@ -62,7 +62,7 @@ class QueryBuilder
 
             return $qry->fetchAll(PDO::FETCH_CLASS);
         } catch (PDOException $err) {
-            throw new \Exception($err->message(), 1);
+            throw new \Exception($err->getMessage(), 1);
         }
     }
 
