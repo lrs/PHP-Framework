@@ -17,4 +17,14 @@ class PageController extends Controller
 
         echo view("pages/index", $params);
     }
+
+    public function about()
+    {
+        echo view("pages/about");
+    }
+
+    public function contact()
+    {
+        echo view("pages/contact");
+    }
 }

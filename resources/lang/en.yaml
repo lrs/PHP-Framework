@@ -2,6 +2,8 @@
 page.home.title: Home
 page.home.description: Welcome to the PHP-Framework
 page.home.welcome: Hello
+page.about.welcome: About
+page.contact.welcome: Contact
 
 # errors
 error.notfound.title: Not Found

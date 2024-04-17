@@ -1,5 +1,7 @@
 <?php
 
+$baseDir = __DIR__ . '/../storage';
+
 return [
-    'local' => __DIR__ . '/../storage'
+    'local' => $baseDir
 ];
