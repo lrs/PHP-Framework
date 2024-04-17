@@ -1,0 +1,20 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/vendor/autoload.php';
+
+require_once __DIR__ . '/bootstrap/app.php';
+
+use App\Database\Migrate;
+
+switch ($argv[1]) {
+    case 'migrate':
+        $migrate = new Migrate();
+
+        $migrate->run();
+        break;
+
+    default:
+        echo "Function {$argv[1]} not recognized!";
+        break;
+}

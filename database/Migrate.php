@@ -18,6 +18,8 @@ class Migrate
     public function run()
     {
         foreach ($this->migrations as $file => $migrations) {
+            echo "Migrating file '{$file}'\r\n";
+
             $query = '';
 
             if (0 === mb_strpos($file, 'create_table_')) {

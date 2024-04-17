@@ -67,5 +67,7 @@ if (array_key_exists('database', App::get('config'))) {
     throw new Exception("Database config file not found", 1);
 };
 
-Router::load(glob(__DIR__ . '/../routes/*.php', GLOB_NOSORT))
-    ->direct(Request::uri(), Request::method());
+if (isset($_SERVER['REQUEST_URI'])) {
+    Router::load(glob(__DIR__ . '/../routes/*.php', GLOB_NOSORT))
+        ->direct(Request::uri(), Request::method());
+}
