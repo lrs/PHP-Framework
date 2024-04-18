@@ -1,29 +1,32 @@
 @use "sass:math";
+@use "../utilities/variables";
+@use "../utilities/functions";
+@use "../utilities/mixins";
 
 // set up column widths based on count and breakpoint
 [class*="grid__col-"] {
-    @include box;
+    @include mixins.box;
 
     width: 100%;
-    padding-left: $grid-gutter;
-    padding-right: $grid-gutter;
+    padding-left: variables.$grid-gutter;
+    padding-right: variables.$grid-gutter;
 }
 
 .grid {
-    @include box;
+    @include mixins.box;
 
-    padding-left: $grid-gutter;
-    padding-right: $grid-gutter;
+    padding-left: variables.$grid-gutter;
+    padding-right: variables.$grid-gutter;
     width: 100%;
-    max-width: map-get($breakpoints, lg);
+    max-width: map-get(variables.$breakpoints, lg);
     margin-left: auto;
     margin-right: auto;
 
     &__row {
         display: flex;
         flex-wrap: wrap;
-        margin-left: -$grid-gutter;
-        margin-right: -$grid-gutter;
+        margin-left: -(variables.$grid-gutter);
+        margin-right: -(variables.$grid-gutter);
 
         &--center {
             justify-content: center;
@@ -46,25 +49,25 @@
     }
 }
 
-@for $num from 1 through $grid-count {
+@for $num from 1 through variables.$grid-count {
     .grid__col-#{$num} {
-        max-width: 100% * math.div($num, $grid-count);
-        flex: 0 0 100% * math.div($num, $grid-count);
+        max-width: 100% * math.div($num, variables.$grid-count);
+        flex: 0 0 100% * math.div($num, variables.$grid-count);
     }
 }
 
-@each $key, $val in $breakpoints {
-    @include breakpoint($key) {
-        @for $num from 1 through $grid-count {
+@each $key, $val in variables.$breakpoints {
+    @include mixins.breakpoint($key) {
+        @for $num from 1 through variables.$grid-count {
             .grid__col-#{$key}-#{$num} {
-                max-width: 100% * math.div($num, $grid-count);
-                flex: 0 0 100% * math.div($num, $grid-count);
+                max-width: 100% * math.div($num, variables.$grid-count);
+                flex: 0 0 100% * math.div($num, variables.$grid-count);
             }
         }
 
         .grid__col-#{$key}-narrow {
-            padding-left: $grid-gutter * 4;
-            padding-right: $grid-gutter * 4;
+            padding-left: variables.$grid-gutter * 4;
+            padding-right: variables.$grid-gutter * 4;
         }
     }
 }

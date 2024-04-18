@@ -1,5 +1,8 @@
+@use "../utilities/functions";
+@use "../utilities/mixins";
+
 .menu {
-    @include box;
+    @include mixins.box;
 
     transition: background-color 250ms ease-out 0s, transform 300ms ease-in-out 0s;
     position: fixed;
@@ -16,7 +19,7 @@
         position: absolute;
         width: 100%;
         height: 100%;
-        box-shadow: shadow(mid);
+        box-shadow: functions.shadow(mid);
         opacity: 0;
         z-index: -1;
         top: 0;
@@ -26,7 +29,7 @@
     }
 
     &--content {
-        background-color: transparentize($color: pick(lightest), $amount: 0.05);
+        background-color: transparentize($color: functions.pick(lightest), $amount: 0.05);
 
         &::after {
             opacity: 1;
@@ -43,30 +46,30 @@
 
     &--banner:not(.menu--content) {
         .link--menu {
-            color: pick(darker);
+            color: functions.pick(darker);
 
             &-active,
             &:hover {
-                color: pick(darkest);
+                color: functions.pick(darkest);
             }
 
             &::before {
-                border-bottom-color: pick(darkest);
+                border-bottom-color: functions.pick(darkest);
             }
         }
     }
 
     &__toggler {
-        @include box;
+        @include mixins.box;
 
-        @include breakpoint(md) {
+        @include mixins.breakpoint(md) {
             display: none;
         }
 
         background-color: transparent;
         border: 0;
         border-radius: 0;
-        color: pick(dark);
+        color: functions.pick(dark);
 
         &-icon {
             width: 2rem;
@@ -74,7 +77,7 @@
 
             &-paths {
                 width: 24px;
-                stroke: pick(dark);
+                stroke: functions.pick(dark);
                 stroke-width: 5%;
                 stroke-linecap: square;
                 stroke-dasharray: 18px 6px;
@@ -87,13 +90,13 @@
         &:focus,
         &:active {
             .menu__toggler-icon-paths {
-                stroke: pick(darkest);
+                stroke: functions.pick(darkest);
             }
         }
     }
 
     &__items {
-        @include breakpoint(sm) {
+        @include mixins.breakpoint(sm) {
             padding-left: 1rem;
             padding-right: 1rem;
         }
@@ -107,11 +110,11 @@
     }
 
     &__dropdown {
-        @include box;
+        @include mixins.box;
 
-        @include breakpoint(md) {
-            background-color: transparentize($color: pick(lightest), $amount: 0.05);
-            box-shadow: shadow(drop);
+        @include mixins.breakpoint(md) {
+            background-color: transparentize($color: functions.pick(lightest), $amount: 0.05);
+            box-shadow: functions.shadow(drop);
             border-bottom-left-radius: radius(small);
             border-bottom-right-radius: radius(small);
             position: absolute;
@@ -120,7 +123,7 @@
             min-width: 17rem;
         }
 
-        background-color: transparentize($color: pick(lighter), $amount: 0.65);
+        background-color: transparentize($color: functions.pick(lighter), $amount: 0.65);
         display: block;
         padding: 0;
         opacity: 0;
@@ -137,10 +140,10 @@
 
 // Mobile first!
 .list--menu {
-    @include box;
+    @include mixins.box;
 
     // Show at breakpoint:
-    @include breakpoint(md) {
+    @include mixins.breakpoint(md) {
         background-color: transparent;
         box-shadow: none;
         position: static;
@@ -153,8 +156,8 @@
         z-index: auto;
     }
 
-    background-color: transparentize($color: pick(lightest), $amount: 0.05);
-    box-shadow: shadow(mid);
+    background-color: transparentize($color: functions.pick(lightest), $amount: 0.05);
+    box-shadow: functions.shadow(mid);
     list-style: none;
     padding: 6rem 0 2rem;
     margin: 0;
@@ -173,7 +176,7 @@
     // Show when class added
     &-show {
         // But make sure it looks okay at breakpoint if class still added
-        @include breakpoint(md) {
+        @include mixins.breakpoint(md) {
             background-color: transparent;
             padding: 0;
             box-shadow: none;
@@ -189,7 +192,7 @@
 
 
 .list__item-menu {
-    @include breakpoint(md) {
+    @include mixins.breakpoint(md) {
         display: inline;
         margin: 0 0.5rem;
     }
@@ -201,7 +204,7 @@
     width: 100%;
 
     &--dropdown-container {
-        @include breakpoint(md) {
+        @include mixins.breakpoint(md) {
             position: relative;
         }
     }
@@ -212,14 +215,14 @@
 }
 
 .link--menu {
-    @include box;
+    @include mixins.box;
 
-    @include breakpoint(md) {
+    @include mixins.breakpoint(md) {
         font-size: 0.85rem;
         width: auto;
     }
 
-    color: pick(darker);
+    color: functions.pick(darker);
     display: inline-block;
     letter-spacing: 0.2em;
     text-decoration: none;
@@ -230,11 +233,11 @@
     position: relative;
 
     &::before {
-        @include box;
+        @include mixins.box;
 
         content: '';
         display: block;
-        border-bottom: solid 1px pick(dark);
+        border-bottom: solid 1px functions.pick(dark);
         width: 2.75em;
         height: 2.75em;
         margin: 0 auto;
@@ -248,7 +251,7 @@
 
     &-active,
     &:hover {
-        color: pick(darkest);
+        color: functions.pick(darkest);
         border: 0;
     }
 
@@ -259,7 +262,7 @@
     }
 
     &-dropdown {
-        @include breakpoint(md) {
+        @include mixins.breakpoint(md) {
             white-space: nowrap;
         }
 
@@ -268,7 +271,7 @@
     }
 
     &-brand {
-        @include breakpoint(sm) {
+        @include mixins.breakpoint(sm) {
             margin: 0;
         }
 
@@ -286,7 +289,7 @@
         &::after {
             display: inline-block;
             content: '';
-            border-top: solid 0.5rem pick(greyest);
+            border-top: solid 0.5rem functions.pick(greyest);
             border-right: solid 0.35rem transparent;
             border-bottom: solid 0.5rem transparent;
             border-left: solid 0.35rem transparent;

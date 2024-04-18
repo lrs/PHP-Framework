@@ -1,10 +1,13 @@
+@use "../utilities/variables";
+@use "../utilities/functions";
+
 html {
     font-size: 16px;
 }
 
 body {
-    background-color: pick(lightest);
-    font-family: $font-system;
+    background-color: functions.pick(lightest);
+    font-family: variables.$font-system;
     font-size: 1rem;
     margin: 0;
 }

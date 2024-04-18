@@ -1,6 +1,8 @@
+@use "../utilities/functions";
+
 .banner {
-    background-color: pick(dark);
-    color: pick(lightest);
+    background-color: functions.pick(dark);
+    color: functions.pick(lightest);
     display: flex;
     justify-content: center;
     align-items: center;

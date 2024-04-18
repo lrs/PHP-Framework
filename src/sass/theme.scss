@@ -1,9 +1,5 @@
-@import "./utilities/variables";
-@import "./utilities/functions";
-@import "./utilities/mixins";
+@use "./layouts/grid";
+@use "./layouts/default";
 
-@import "./layouts/grid";
-@import "./layouts/default";
-
-@import "./components/menu";
-@import "./components/banner";
+@use "./components/menu";
+@use "./components/banner";

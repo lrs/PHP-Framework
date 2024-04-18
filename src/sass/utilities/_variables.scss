@@ -10,6 +10,16 @@ $colors: (
     darkest: hsl(225, 5%, 5%),
 );
 
+$shadows: (
+    low: (0 2px 12px hsla(250, 4%, 1%, 0.2), 0 2px 4px hsla(250, 4%, 1%, 0.15)),
+    mid: (0 4px 14px hsla(250, 4%, 1%, 0.2), 0 4px 6px hsla(250, 4%, 1%, 0.15)),
+    high: (0 7px 14px hsla(250, 4%, 1%, 0.25), 0 7px 11px hsla(250, 4%, 1%, 0.2)),
+
+    drop: (0 14px 18px hsla(250, 4%, 1%, 0.15), 0 14px 10px hsla(250, 4%, 1%, 0.1)),
+    card: (20px 20px 60px hsla(0, 0%, 83.5%, 1), -20px -20px 60px hsla(0, 0%, 100%, 1)),
+    focus: 0 0 2px hsl(214, 43.9%, 37.1%)
+);
+
 $breakpoints: (
     sm: 576px,
     md: 992px,

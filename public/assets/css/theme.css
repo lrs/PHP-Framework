@@ -340,7 +340,7 @@ body {
   position: absolute;
   width: 100%;
   height: 100%;
-  box-shadow: shadow(mid);
+  box-shadow: 0 4px 14px hsla(250, 4%, 1%, 0.2), 0 4px 6px hsla(250, 4%, 1%, 0.15);
   opacity: 0;
   z-index: -1;
   top: 0;
@@ -424,7 +424,7 @@ body {
 @media (min-width: 992px) {
   .menu__dropdown {
     background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: shadow(drop);
+    box-shadow: 0 14px 18px hsla(250, 4%, 1%, 0.15), 0 14px 10px hsla(250, 4%, 1%, 0.1);
     border-bottom-left-radius: radius(small);
     border-bottom-right-radius: radius(small);
     position: absolute;
@@ -441,7 +441,7 @@ body {
 .list--menu {
   box-sizing: border-box;
   background-color: rgba(255, 255, 255, 0.95);
-  box-shadow: shadow(mid);
+  box-shadow: 0 4px 14px hsla(250, 4%, 1%, 0.2), 0 4px 6px hsla(250, 4%, 1%, 0.15);
   list-style: none;
   padding: 6rem 0 2rem;
   margin: 0;
