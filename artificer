@@ -14,6 +14,10 @@ switch ($argv[1]) {
         $migrate->run();
         break;
 
+    case 'serve':
+        exec('cd public && php -S localhost:8000');
+        break;
+
     default:
         echo "Function {$argv[1]} not recognized!";
         break;
