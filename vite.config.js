@@ -1,4 +1,4 @@
-import { defineConfig } from "vite";
+import { defineConfig, normalizePath } from "vite";
 import liveReload from "vite-plugin-live-reload";
 import { viteStaticCopy } from "vite-plugin-static-copy";
 import path from "node:path";
@@ -13,7 +13,7 @@ export default defineConfig({
             // include static files that do not require preprocessing.
             targets: [
                 {
-                    src: path.resolve(__dirname, "src/static/img/*.*"),
+                    src: normalizePath(path.resolve(__dirname, "src/static/img/*.*")),
                     dest: "./img/"
                 }
             ]
