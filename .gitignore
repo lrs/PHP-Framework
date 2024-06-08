@@ -1,6 +1,5 @@
 # folders
 node_modules/
-src/temp/
 storage/cache/**/*
 storage/logs/**/*
 storage/media/**/*
