@@ -23,17 +23,25 @@ function view(string $name, array $params = [])
     $twig->addFilter($highlight);
 
     // Extend Twig with custom functions (twig function name, callback, options).
+    $vite = new TwigFunction('vite', 'vite', ['is_safe' => ['html']]);
+    $twig->addFunction($vite);
+
     $lorem = new TwigFunction('lorem', 'lorem');
     $twig->addFunction($lorem);
 
     // translate text based on yaml files in ./resources/lang.
-    $trans = new TwigFunction('_', 'trans', ['is_safe' => ['html']]);
-    $twig->addFunction($trans);
+    $translate = new TwigFunction('_', 'translate', ['is_safe' => ['html']]);
+    $twig->addFunction($translate);
 
     return $twig->render("{$name}.twig", $params);
 }
 
-function trans(string $text)
+function vite(string $entry)
+{
+    return viteEntries($entry);
+}
+
+function translate(string $text)
 {
     $translate = new Translate();
 

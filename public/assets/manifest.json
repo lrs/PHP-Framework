@@ -1,0 +1,13 @@
+{
+  "sass/theme.scss": {
+    "file": "css/theme.css",
+    "src": "sass/theme.scss",
+    "isEntry": true
+  },
+  "ts/app/main.ts": {
+    "file": "js/main.js",
+    "name": "main",
+    "src": "ts/app/main.ts",
+    "isEntry": true
+  }
+}

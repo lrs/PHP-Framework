@@ -32,6 +32,7 @@ if (!array_key_exists('csrf', $_SESSION)) {
     $_SESSION['csrf'] = $token;
 }
 
+require 'vite.php';
 require 'helpers.php';
 require 'twig.php';
 
