@@ -1,19 +1,21 @@
+@use "sass:map";
+
 @use "../utilities/variables";
 
 // Get color from $colors array and warn if chosen color name doesn't exist.
 @function pick($key) {
-    @if not map-has-key(variables.$colors, $key) {
+    @if not map.get(variables.$colors, $key) {
         @warn 'Color "#{$key}" not found in ./src/sass/utilities/_variables.scss/$colors map.';
     }
 
-    @return map-get(variables.$colors, $key);
+    @return map.get(variables.$colors, $key);
 }
 
 // Shadows
 @function shadow($key) {
-    @if not map-has-key(variables.$shadows, $key) {
+    @if not map.get(variables.$shadows, $key) {
         @warn 'Shadow "#{$key}" not found in ./src/sass/helpers/_variables.scss/$shadows map.';
     }
 
-    @return map-get(variables.$shadows, $key);
+    @return map.get(variables.$shadows, $key);
 }

@@ -1,3 +1,5 @@
+@use "sass:map";
+
 @use "../utilities/variables";
 
 @mixin box {
@@ -5,11 +7,11 @@
 }
 
 @mixin breakpoint($key) {
-    @if not map-has-key(variables.$breakpoints, $key) {
+    @if not map.get(variables.$breakpoints, $key) {
         @warn 'Breakpoint "#{$key}" not found in ./src/sass/helpers/_variables.scss/$breakpoints map.';
     }
 
-    @media (min-width: map-get(variables.$breakpoints, $key)) {
+    @media (min-width: map.get(variables.$breakpoints, $key)) {
         @content;
     }
 }

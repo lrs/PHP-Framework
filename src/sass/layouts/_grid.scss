@@ -1,4 +1,6 @@
 @use "sass:math";
+@use "sass:map";
+
 @use "../utilities/variables";
 @use "../utilities/functions";
 @use "../utilities/mixins";
@@ -18,7 +20,7 @@
     padding-left: variables.$grid-gutter;
     padding-right: variables.$grid-gutter;
     width: 100%;
-    max-width: map-get(variables.$breakpoints, lg);
+    max-width: map.get(variables.$breakpoints, lg);
     margin-left: auto;
     margin-right: auto;
 

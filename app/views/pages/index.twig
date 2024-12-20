@@ -8,8 +8,17 @@
 {% endblock %}
 
 {% block content %}
-    <div class="grid__col-12">
-        <p>{{ _('page.home.welcome') }} {{ name }}!</p>
+    <div class="grid__col-12 grid__col-center">
+        <h2>{{ _('page.home.welcome') }} {{ name }}!</h2>
+
+    </div>
+    <div class="grid__col-12 grid__col-md-4">
+        <p>{{ lorem(30) }}</p>
+    </div>
+    <div class="grid__col-12 grid__col-md-4">
+        <p>{{ lorem(30) }}</p>
+    </div>
+    <div class="grid__col-12 grid__col-md-4">
         <p>{{ lorem(30) }}</p>
     </div>
 {% endblock %}

@@ -1,0 +1,15 @@
+{% set title = _('page.home.title') %}
+{% set desc = _('page.home.description') %}
+
+{% extends 'layouts/default.twig' %}
+
+{% block banner %}
+    {{ include('components/banner.twig', { title: title }) }}
+{% endblock %}
+
+{% block content %}
+    <div class="grid__col-12">
+        <p>{{ _('page.home.welcome') }} {{ name }}!</p>
+        <p>Admin</p>
+    </div>
+{% endblock %}

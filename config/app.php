@@ -3,5 +3,6 @@
 $baseDir = __DIR__ . '/../packages';
 
 return [
-    'providers' => $baseDir
+    'providers' => $baseDir,
+    'admin' => env('ADMIN', 'admin'),
 ];
